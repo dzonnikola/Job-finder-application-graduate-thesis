@@ -28,7 +28,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a style="color:white;" href="oglasi.php" class="list-group-item list-group-item-action bg-dark">Moji oglasi</a>
         <a style="color:white;" href="aktivniOglasi.php" class="list-group-item list-group-item-action bg-dark">Aktivni oglasi</a>
         <a style="color:white;" href="neaktivniOglasi.php" class="list-group-item list-group-item-action bg-dark">Neaktivni oglasi</a>
-        <a style="color:white;" href="neaktivniOglasi.php" class="list-group-item list-group-item-action bg-dark">Pregled prijava</a>
+        <a style="color:white;" href="pregledPrijava.php" class="list-group-item list-group-item-action bg-dark">Pregled prijava</a>
         <a style="color:white;" href="podesavanja.php" class="list-group-item list-group-item-action bg-dark">Podešavanja</a>
       </div>
     </div>

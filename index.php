@@ -44,9 +44,9 @@
 			<div class="container">      
 		        <div class="row justify-content-md-center">
 		          <div class="col-md-10">
-		            <div class="contents text-center">
-		              <h1>Kategorije</h1>
-		              <p><b>Odaberi programski jezik koji ispunjava tvoja interesovanja</b></p><br>
+		            <div class="text-center" style="margin-top: 25px;">
+		              <h1 style="color: black">Kategorije</h1>
+		              <p style="color: black"><b>Odaberi programski jezik koji ispunjava tvoja interesovanja</b></p><br>
 		            </div>
 		          </div>
 		        </div>
@@ -54,17 +54,18 @@
 		        <div class="row justify-content-md-center">
 		        		<?php
 		        		$query = "SELECT * FROM kategorije";
-		        		$result = mysqli_query($db, $query) or die(mysqli_error);
+		        		$result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 		        		if(mysqli_num_rows($result) > 0){
 		        			while ($row = mysqli_fetch_array($result)) {
 		        		?>
 		        		<div class="col-lg-3 col-md-3 col-xs-12">
-		        			<a href="index.php">
-			        			<div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
+		        			<a href="kategorije.php?id=<?php echo $row["idKategorije"]; ?>" method="GET">
+			        			<div style="background-color:#f1f1f1; padding:16px;" align="center">
 					            	<img src="media/categoryImage/<?php echo $row["slikaKategorije"]; ?>" class="img-responsive"/>
 					            	<p align="center" style="color: black;"><?php echo $row["nazivKategorije"];?></p>
-					            </div><br>		
+					            	<input type="hidden" name="id" value="<?php echo $row["idKategorije"]; ?>">
+					            </div><br>
 		        			</a>
 		        		 </div>
 			            <?php

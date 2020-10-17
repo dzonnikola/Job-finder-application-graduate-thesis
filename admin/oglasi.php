@@ -88,7 +88,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                           <?php
 
                             $mysqli = new mysqli('localhost', 'root', '', 'itberza') or die($mysqli->error);
-                            $result = $mysqli -> query("SELECT * FROM oglas");
+                            $result = $mysqli -> query("SELECT * FROM oglas") or die(mysqli_error($db));;
                             if($result->num_rows>=1)
                             {
                               $message="";

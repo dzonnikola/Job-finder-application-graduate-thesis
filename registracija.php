@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-		<title>Prijavi se - IT berza - portal za pretragu poslova u IT struci</title>
+		<title>Registruj se - IT berza - portal za pretragu poslova u IT struci</title>
 
 		<script type="text/javascript">			
             function checkLozinka(form) { 
@@ -68,33 +68,35 @@
 		          <div class="col-md-10">
 		            <div class="contents text-center">
 		              <h1>Registracija</h1>
-						<form onsubmit="return checkLozinka(this)" action="registracijaCheck.php" method="POST">
-		                  <div class="form-group">
-		                    <label>Ime:</label>
-		                    <input type="text" name="ime" class="form-control" placeholder="Vaše ime" required>
-		                  </div>                                   
-		                  <div class="form-group">
-		                    <label>Prezime:</label>
-		                    <input type="text" name="prezime" class="form-control" placeholder="Vaše prezime" required>
-		                  </div> 
-		                  <div class="form-group">
-		                    <label>Username:</label>
-		                    <input type="username" name="username" class="form-control" placeholder="Vaš username" required>
-		                  </div>                 
-		                  <div class="form-group">
-		                    <label>Email adresa:</label>
-		                    <input type="email" name="email" class="form-control" placeholder="Vaš email" required>
-		                  </div>                  
-		                  <div class="form-group">
-		                    <label>Lozinka:</label>
-		                    <input type="password" name="pwd" class="form-control" placeholder="Vaša lozinka" required>
-		                  </div> 
-		                  <div class="form-group">
-		                    <label>Ponovo unesite lozinku:</label>
-		                    <input type="password" name="pwdre" class="form-control" placeholder="Ponovljena lozinka" required>
-		                  </div>                  
-		                  <button type="submit" name="reg_button" id="reg_button" class="btn btn-primary">Registruj se</button>
-		                </form>
+						<center>
+							<form onsubmit="return checkLozinka(this)" action="registracijaCheck.php" method="POST" style="width: 450px;">
+			                  <div class="form-group">
+			                    <label>Ime:</label>
+			                    <input type="text" name="ime" class="form-control" placeholder="Vaše ime" required>
+			                  </div>                                   
+			                  <div class="form-group">
+			                    <label>Prezime:</label>
+			                    <input type="text" name="prezime" class="form-control" placeholder="Vaše prezime" required>
+			                  </div> 
+			                  <div class="form-group">
+			                    <label>Username:</label>
+			                    <input type="username" name="username" class="form-control" placeholder="Vaš username" required>
+			                  </div>                 
+			                  <div class="form-group">
+			                    <label>Email adresa:</label>
+			                    <input type="email" name="email" class="form-control" placeholder="Vaš email" required>
+			                  </div>                  
+			                  <div class="form-group">
+			                    <label>Lozinka:</label>
+			                    <input type="password" name="pwd" class="form-control" placeholder="Vaša lozinka" required>
+			                  </div> 
+			                  <div class="form-group">
+			                    <label>Ponovo unesite lozinku:</label>
+			                    <input type="password" name="pwdre" class="form-control" placeholder="Ponovljena lozinka" required>
+			                  </div>                  
+			                  <button type="submit" name="reg_button" id="reg_button" class="btn btn-primary">Registruj se</button>
+			                </form>
+						</center>
 		            </div>
 		          </div>
 		        </div> 

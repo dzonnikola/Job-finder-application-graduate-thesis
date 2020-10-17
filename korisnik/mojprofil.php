@@ -14,7 +14,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Berza - Poslodavac panel</title>
+    <title>IT Berza - Klijent panel</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
@@ -27,7 +27,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <div class="list-group list-group-flush">
         <a style="color:white;" href="mojprofil.php" class="list-group-item list-group-item-action bg-dark">Početna <i class="lnr lnr-home"></i> </a>
         <a style="color:white;" href="oglasiKojePratim.php" class="list-group-item list-group-item-action bg-dark">Oglasi koje pratim <i class="lnr lnr-heart"></i> </a>
-        <a style="color:white;" href="oglasiKonkurs.php" class="list-group-item list-group-item-action bg-dark">Konkurisani oglasi <i class="lnr lnr-chevron-up"></i> </a>
+        <a style="color:white;" href="konkurisaniOglasi.php" class="list-group-item list-group-item-action bg-dark">Konkurisani oglasi <i class="lnr lnr-chevron-up"></i> </a>
         <a style="color:white;" href="podesavanja.php" class="list-group-item list-group-item-action bg-dark">Podešavanja <i class="lnr lnr-cog"></i></a>
       </div>
     </div>
@@ -47,6 +47,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="../index.php">Nazad na pocetnu <span class="sr-only">(current)</span></a>
+            </li>
             <li class="nav-item active">
               <a class="nav-link" href="../logout.php">Odjava <span class="sr-only">(current)</span></a>
             </li>

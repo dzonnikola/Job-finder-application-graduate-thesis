@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	require_once 'config.php';
 
 	$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die(mysqli_error);
@@ -12,34 +14,15 @@
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 		<title>IT berza - portal za pretragu poslova u IT struci</title>
 	</head>
-		<header>
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			  <a class="navbar-brand" href="index.php">IT Berza</a>
-			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
-			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    <ul class="navbar-nav mr-auto">
-			      <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          Oglasi
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          <a class="dropdown-item" href="prakse.php">Prakse</a>
-			          <a class="dropdown-item" href="posao.php">Poslovi</a>
-			        </div>
-			      </li>
-			      <li class="nav-item">
-			        <a class="nav-link" href="#">Kontakt</a>
-			      </li>
-			    </ul>
-			    <form class="form-inline my-2 my-lg-0">
-			      <a href="prijava.php" class="btn btn-outline-info">Prijava</a>
-			      <a href="registracija.php" class="btn btn-outline-warning">Registracija</a>
-			    </form>
-			  </div>
-			</nav>
-		</header>
+	<?php
+	 
+	if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+		include 'include/navbar.html';
+	}
+	else{
+		include 'include/logged-in-navbar.php';
+	}
+	?>
 	<body>
 		<section id="bellow-header">
 			<div class="container">      
@@ -70,31 +53,38 @@
 		        		$query = "SELECT * FROM oglas 
 		        		JOIN kategorije on oglas.kategorijaId=kategorije.idKategorije 
 		        		JOIN poslodavac on oglas.poslodavacId=poslodavac.idPoslodavca
-		        		WHERE tipOglasa = 'posao' ORDER BY idOglasa ASC";
-		        		$result = mysqli_query($db, $query) or die(mysqli_error);
-
+		        		WHERE tipOglasa = 'posao' ORDER BY trajeOd ASC";
+		        		$result = mysqli_query($db, $query) or die(mysqli_error($db));
 		        		if(mysqli_num_rows($result) > 0){
 		        			while ($row = mysqli_fetch_array($result)) {
 		        		?>
 		        		<div class="col-lg-6 col-md-6 col-xs-12">
-		        			<div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px; margin: 20px 0;">
-		        				<div class="row">
-			        				<div class="col-lg-3 col-md-3 col-xs-12" align="center">
-			        					<img src="media/categoryImage/<?php echo $row["slikaKategorije"]; ?>" class="img-responsive"/>
+		        			<a href="oglas.php?oId=<?php echo $row["idOglasa"];?>" method="GET">
+			        			<div style="background-color:#f1f1f1; padding:16px; margin: 20px 0;">
+			        				<div class="row">
+				        				<div class="col-lg-3 col-md-3 col-xs-12" align="center">
+				        					<img src="media/categoryImage/<?php echo $row["slikaKategorije"]; ?>" class="img-responsive"/>
+				        				</div>
+				        				<div class="col-lg-9 col-md-9 col-xs-12" align="center">
+					        				<h5 align="center" style="color: black;"><b><?php echo $row["naslov"];?></b></h5>
+							            	<p align="center" style="color: black;">Opis oglasa: <?php echo $row["opis"];?></p>
+							            	<p align="center" style="color: black;">Tip zaposlenja: <?php echo $row["tipOglasa"];?></p>
+							            	<p align="center" style="color: black;">Oglas traje do: <?php echo $row["trajeDo"];?></p>
+							            	<p align="center" style="color: black;">Poslodavac: <?php echo $row["naziv"];?></p>	
+							            	<input type="hidden" name="id" value="<?php echo $row["idOglasa"]; ?>">
+				        				</div>
 			        				</div>
-			        				<div class="col-lg-9 col-md-9 col-xs-12" align="center">
-				        				<h5 align="center" style="color: black;"><b><?php echo $row["naslov"];?></b></h5>
-						            	<p align="center" style="color: black;">Opis oglasa: <?php echo $row["opis"];?></p>
-						            	<p align="center" style="color: black;">Tip zaposlenja: <?php echo $row["tipOglasa"];?></p>
-						            	<p align="center" style="color: black;">Oglas traje do: <?php echo $row["trajeDo"];?></p>
-						            	<p align="center" style="color: black;">Poslodavac: <?php echo $row["naziv"];?></p>	
-			        				</div>
-		        				</div>
-				       		</div>	
+					       		</div>
+		        			</a>
 		        		 </div>
 			            <?php
 			        		}
-			        	}	
+			        	}
+			        	else{	
+		        		?>
+		        		<h2 style="color:black;" >Nema oglasa za prikazivanje</h2>
+		        		<?php
+		        		}
 		        		?>
 		        </div>
 		  	</div>
